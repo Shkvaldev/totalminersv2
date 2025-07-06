@@ -21,3 +21,4 @@ from .tickets import Ticket
 from .users import User, UserLangs
 from .workers import Worker
 from .discounts import Discount
+from .news import News

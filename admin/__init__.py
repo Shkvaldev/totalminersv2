@@ -20,6 +20,7 @@ from admin.routers.discounts import discounts_router
 from admin.routers.payments import payments_router
 from admin.routers.non_payments import non_payments_router
 from admin.routers.main_page import main_page_router
+from admin.routers.news import news_router
 from admin.utils import auth_required, generate_token
 from config import settings
 from logger import config_logger
@@ -42,6 +43,7 @@ app.register_blueprint(discounts_router)
 app.register_blueprint(payments_router)
 app.register_blueprint(non_payments_router)
 app.register_blueprint(main_page_router)
+app.register_blueprint(news_router)
 
 @app.get('/')
 @app.get('/index')
