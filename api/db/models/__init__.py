@@ -22,3 +22,4 @@ from .users import User, UserLangs
 from .workers import Worker
 from .discounts import Discount
 from .news import News
+from .mail_templates import MailTemplate
