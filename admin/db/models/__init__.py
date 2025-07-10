@@ -23,3 +23,4 @@ from .workers import Worker
 from .discounts import Discount
 from .news import News
 from .mail_templates import MailTemplate
+from .mail_compaign import MailCampaign

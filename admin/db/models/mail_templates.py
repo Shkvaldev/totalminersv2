@@ -12,3 +12,5 @@ class MailTemplate(Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(500), nullable=False)
     content = Column(Text, nullable=False)
+
+    mail_campaigns = relationship("MailCampaign", back_populates="template")

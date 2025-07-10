@@ -45,3 +45,4 @@ class User(Model):
     created = Column(DateTime, default=datetime.datetime.now)
 
     discounts = relationship("Discount", back_populates="user")
+    mail_campaigns = relationship("MailCampaign", back_populates="user")

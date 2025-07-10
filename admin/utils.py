@@ -1,4 +1,7 @@
 import requests
+from retry import retry
+import smtplib
+from email.message import EmailMessage
 import jwt
 from datetime import datetime, timedelta, timezone
 from functools import wraps
@@ -139,3 +142,21 @@ def get_btc_usd_rate():
     response.raise_for_status()
     data = response.json()
     return data["bitcoin"]["usd"]
+
+@retry(delay=5, tries=10)
+def send_email(email, title: str, content: str):
+    """
+    Отправляет письмо по почте
+    """
+    msg = EmailMessage()
+    msg["Subject"] = title
+    msg['From'] = settings.email_address
+    msg['To'] = email
+    msg.set_content(content)
+
+    server = smtplib.SMTP(settings.email_server)
+    server.starttls()
+    server.login(settings.email_address, settings.email_password)
+    server.send_message(msg)
+    server.quit()
+    print("Email sent")

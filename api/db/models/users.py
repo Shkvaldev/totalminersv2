@@ -19,7 +19,7 @@ class User(Model):
     """
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     firstname = Column(String)
     lastname = Column(String)
     phone = Column(String, unique=True)
@@ -45,3 +45,4 @@ class User(Model):
     created = Column(DateTime, default=datetime.datetime.now)
 
     discounts = relationship("Discount", back_populates="user")
+    mail_campaigns = relationship("MailCampaign", back_populates="user")
